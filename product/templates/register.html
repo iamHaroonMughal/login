@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+ {% block start %}
+   
+<div class = "container mt-5">
+
+      <form class = "col-6 mx-auto card p-3 shadow-lg" method = "POST" enctype= "multipart/form-data">
+        {% csrf_token %}
+        <h2 style = "text-align:center;"> Regiter Account</h2>
+        <hr>
+        {% if messages %}
+        
+        <div class="alert alert-primary" role="alert">
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+        </div>
+
+{% endif %}
+        <form method ="POST">
+           {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Firstname</label>
+                <input type="text" class="form-control" required name = "firstname" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Lastname</label>
+                <input type="text" class="form-control" required name = "lastname" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Username</label>
+              <input type="text" class="form-control" required name = "username" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" name ="password" required class="form-control" id="exampleInputPassword1">
+            </div>
+            <p> Already have an account <a href="/login/">Login</a></p>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+</div>
+
+
+
+{% endblock %}
